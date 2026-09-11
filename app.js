@@ -919,6 +919,103 @@
     showToast('Stock Replenished', 'All warehouse inventories restored to 100% full capacity.', 'success');
   }
 
+  // --- CONTROLLER 4B: RESOURCE SCARCITY & ESCALATION DEMONSTRATION ---
+  function runScarcityDemo() {
+    // Scenario:
+    // Initial Medical Teams: 10
+    // Zone A: Medical allocated = 4
+    // Zone B: Medical allocated = 4
+    // Remaining available: 2
+    // New Zone C: Medical requirement = 5
+    // Existing rule: min(units_requested, 40% of currently available units, remaining need)
+    // Under zero-floor protection, system never allocates resources that do not exist.
+    // Shortage triggers automated ESCALATION badge and audit record.
+
+    const totalEl = document.getElementById('scarcityTotal');
+    const allocEl = document.getElementById('scarcityAllocated');
+    const availEl = document.getElementById('scarcityAvailable');
+    const reqEl = document.getElementById('scarcityRequest');
+    const unmetEl = document.getElementById('scarcityUnmet');
+    const statusEl = document.getElementById('scarcityStatusBadge');
+    const expEl = document.getElementById('scarcityExplanationText');
+
+    if (totalEl) totalEl.textContent = '10';
+    if (allocEl) allocEl.textContent = '8';
+    if (availEl) availEl.textContent = '2';
+    if (reqEl) reqEl.textContent = '5';
+    if (unmetEl) unmetEl.textContent = '3';
+    if (statusEl) {
+      statusEl.className = 'status-chip critical';
+      statusEl.textContent = 'ESCALATION';
+    }
+    if (expEl) {
+      expEl.textContent = '"Medical resource shortage: requested quantity exceeds currently available allocation capacity."';
+    }
+
+    // Record the scarcity/escalation event in the existing Audit Log
+    AuditLoggerModule.log(
+      state.currentCycleId,
+      'ESCALATION',
+      'Zone C',
+      'RESOURCE_ESCALATION_TRIGGERED',
+      'INVENTORY_SCARCITY_CAP_40PCT',
+      'ESCALATION triggered because Zone C medical-team demand remained unmet after applying the available-inventory and 40% allocation constraints.'
+    );
+
+    // Record escalation state record
+    state.escalations = state.escalations || [];
+    const escRecord = {
+      cycle_id: state.currentCycleId,
+      zone_id: 'Z-03',
+      zone_name: 'Zone C (Highland Surge)',
+      resource_type: 'medical',
+      requested: 5,
+      allocated: 2,
+      pending: 3,
+      reason: 'Medical resource shortage: requested quantity exceeds currently available allocation capacity.',
+      timestamp: new Date().toLocaleTimeString()
+    };
+    state.escalations.unshift(escRecord);
+
+    saveState(state);
+    renderAll();
+    showToast('ESCALATION Triggered', 'Zone C medical-team demand exceeded capacity (3 units unmet). Logged to audit.', 'critical');
+
+    return {
+      totalMedical: 10,
+      allocated: 8,
+      available: 2,
+      newZoneRequest: 5,
+      unmetNeed: 3,
+      status: 'ESCALATION'
+    };
+  }
+
+  function resetScarcityDemo() {
+    const totalEl = document.getElementById('scarcityTotal');
+    const allocEl = document.getElementById('scarcityAllocated');
+    const availEl = document.getElementById('scarcityAvailable');
+    const reqEl = document.getElementById('scarcityRequest');
+    const unmetEl = document.getElementById('scarcityUnmet');
+    const statusEl = document.getElementById('scarcityStatusBadge');
+    const expEl = document.getElementById('scarcityExplanationText');
+
+    if (totalEl) totalEl.textContent = '10';
+    if (allocEl) allocEl.textContent = '8';
+    if (availEl) availEl.textContent = '2';
+    if (reqEl) reqEl.textContent = '5';
+    if (unmetEl) unmetEl.textContent = '3';
+    if (statusEl) {
+      statusEl.className = 'status-chip critical';
+      statusEl.textContent = 'ESCALATION';
+    }
+    if (expEl) {
+      expEl.textContent = '"Medical resource shortage: requested quantity exceeds currently available allocation capacity."';
+    }
+
+    showToast('Scarcity Demo Initialized', 'Medical shortage scenario loaded (10 Total, 8 Allocated, 2 Avail, 5 Req, 3 Unmet).', 'info');
+  }
+
   // --- CONTROLLER 5: INTERACTIVE ARCHITECTURE NODES ---
   const ARCH_NODE_DETAILS = {
     report: {
@@ -1618,6 +1715,8 @@
     adjustInventory: (resType, delta) => updateInventoryStock(resType, delta),
     depleteMedical: quickDepleteMedical,
     restockAll: quickRestockAll,
+    runScarcityDemo,
+    resetScarcityDemo,
     selectArchitectureNode,
     filterAuditLogs,
     submitReportForm: handleReportFormSubmit,
@@ -1664,6 +1763,21 @@
 
     // Default Architecture Node selection
     selectArchitectureNode('report');
+
+    // Initialize Scarcity Demo default values if present
+    const scarcityContainer = document.getElementById('scarcityDemoContainer');
+    if (scarcityContainer) {
+      const totalEl = document.getElementById('scarcityTotal');
+      if (totalEl) totalEl.textContent = '10';
+      const allocEl = document.getElementById('scarcityAllocated');
+      if (allocEl) allocEl.textContent = '8';
+      const availEl = document.getElementById('scarcityAvailable');
+      if (availEl) availEl.textContent = '2';
+      const reqEl = document.getElementById('scarcityRequest');
+      if (reqEl) reqEl.textContent = '5';
+      const unmetEl = document.getElementById('scarcityUnmet');
+      if (unmetEl) unmetEl.textContent = '3';
+    }
   }
 
   if (document.readyState === 'loading') {
