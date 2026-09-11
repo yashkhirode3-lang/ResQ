@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESQ-AGENT: Agentic Disaster Relief & Emergency Resource Coordinator (PS20)</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="RESQ-AGENT: Deterministic multi-agent disaster response coordination platform. PS20, Kurukshetra 2.0, Domain 1: AIML / Agentic AI / Data Science.">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <!-- ==========================================================================
+       TOP STICKY NAVIGATION BAR
+       ========================================================================== -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <button class="btn btn-icon mobile-menu-toggle" onclick="window.RESQ.toggleMobileSidebar()" title="Toggle Sidebar">
+        ☰
+      </button>
+      <a href="#hero" class="brand-link" onclick="window.RESQ.scrollToSection('hero')">
+        <div class="brand-logo-badge">⚡</div>
+        <div class="brand-info">
+          <span class="brand-name">RESQ-AGENT <span class="meta-pill meta-pill-accent" style="font-size:0.62rem; padding:1px 6px;">PS20</span></span>
+          <span class="brand-sub">Kurukshetra 2.0 • Domain 1</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Category Nav Links -->
+    <nav class="nav-center">
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-01-summary')"><span>01</span>Research</a>
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-05-solution')"><span>02</span>Technical Solution</a>
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-18-sim-priority')"><span>03</span>Interactive Systems</a>
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-23-testing')"><span>04</span>Validation</a>
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-20-scenario')"><span>05</span>Demo</a>
+      <a class="nav-category-link" onclick="window.RESQ.scrollToSection('sec-29-references')"><span>06</span>References</a>
+    </nav>
+
+    <!-- Search Box & Actions -->
+    <div class="nav-right">
+      <div class="nav-search">
+        <input type="text" id="headerSearchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="nav-search-icon">🔍</span>
+      </div>
+
+      <button class="btn btn-live-pulse" onclick="window.RESQ.scrollToSection('sec-21-dashboard')">
+        Live Prototype
+      </button>
+
+      <button class="btn btn-secondary" onclick="window.print()" title="Print or Save as PDF">
+        Print / Export
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       PAGE LAYOUT: SIDEBAR + MAIN CONTENT
+       ========================================================================== -->
+  <div class="portal-container">
+
+    <!-- STICKY LEFT SIDEBAR (29 NUMBERED SECTIONS) -->
+    <aside class="portal-sidebar">
+      <!-- Group 01: Research -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>01 Research</span>
+          <span>4</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-01-summary" onclick="window.RESQ.scrollToSection('sec-01-summary')" class="sidebar-nav-link active"><span class="sidebar-num">01</span>Executive Summary</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-02-problem" onclick="window.RESQ.scrollToSection('sec-02-problem')" class="sidebar-nav-link"><span class="sidebar-num">02</span>Problem Statement</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-03-challenge" onclick="window.RESQ.scrollToSection('sec-03-challenge')" class="sidebar-nav-link"><span class="sidebar-num">03</span>Disaster Response Challenge</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-04-objectives" onclick="window.RESQ.scrollToSection('sec-04-objectives')" class="sidebar-nav-link"><span class="sidebar-num">04</span>Objectives</a></li>
+        </ul>
+      </div>
+
+      <!-- Group 02: Technical Solution -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>02 Technical Solution</span>
+          <span>6</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-05-solution" onclick="window.RESQ.scrollToSection('sec-05-solution')" class="sidebar-nav-link"><span class="sidebar-num">05</span>Proposed Solution</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-06-requirements" onclick="window.RESQ.scrollToSection('sec-06-requirements')" class="sidebar-nav-link"><span class="sidebar-num">06</span>Core Requirements</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-07-personas" onclick="window.RESQ.scrollToSection('sec-07-personas')" class="sidebar-nav-link"><span class="sidebar-num">07</span>Users & Personas</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-08-workflow" onclick="window.RESQ.scrollToSection('sec-08-workflow')" class="sidebar-nav-link"><span class="sidebar-num">08</span>System Workflow</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-09-architecture" onclick="window.RESQ.scrollToSection('sec-09-architecture')" class="sidebar-nav-link"><span class="sidebar-num">09</span>Multi-Agent Architecture</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-10-datamodel" onclick="window.RESQ.scrollToSection('sec-10-datamodel')" class="sidebar-nav-link"><span class="sidebar-num">10</span>Data Model & Intake</a></li>
+        </ul>
+      </div>
+
+      <!-- Group 03: Interactive Systems & Agents -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>03 Interactive Systems</span>
+          <span>12</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-11-needs-agent" onclick="window.RESQ.scrollToSection('sec-11-needs-agent')" class="sidebar-nav-link"><span class="sidebar-num">11</span>Needs Assessment Agent</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-12-priority-engine" onclick="window.RESQ.scrollToSection('sec-12-priority-engine')" class="sidebar-nav-link"><span class="sidebar-num">12</span>Priority Scoring Engine</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-13-allocation-engine" onclick="window.RESQ.scrollToSection('sec-13-allocation-engine')" class="sidebar-nav-link"><span class="sidebar-num">13</span>Resource Allocation Engine</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-14-reallocation" onclick="window.RESQ.scrollToSection('sec-14-reallocation')" class="sidebar-nav-link"><span class="sidebar-num">14</span>Dynamic Reallocation</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-15-duplicate" onclick="window.RESQ.scrollToSection('sec-15-duplicate')" class="sidebar-nav-link"><span class="sidebar-num">15</span>Duplicate-Effort Detection</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-16-interagency" onclick="window.RESQ.scrollToSection('sec-16-interagency')" class="sidebar-nav-link"><span class="sidebar-num">16</span>Inter-Agency Coordination</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-17-inventory" onclick="window.RESQ.scrollToSection('sec-17-inventory')" class="sidebar-nav-link"><span class="sidebar-num">17</span>Resource Inventory</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-18-sim-priority" onclick="window.RESQ.scrollToSection('sec-18-sim-priority')" class="sidebar-nav-link"><span class="sidebar-num">18</span>Priority Simulator</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-19-sim-allocation" onclick="window.RESQ.scrollToSection('sec-19-sim-allocation')" class="sidebar-nav-link"><span class="sidebar-num">19</span>Allocation Simulator</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-20-scenario" onclick="window.RESQ.scrollToSection('sec-20-scenario')" class="sidebar-nav-link"><span class="sidebar-num">20</span>Live Disaster Scenario</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-21-dashboard" onclick="window.RESQ.scrollToSection('sec-21-dashboard')" class="sidebar-nav-link"><span class="sidebar-num">21</span>Coordination Dashboard</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-22-audit" onclick="window.RESQ.scrollToSection('sec-22-audit')" class="sidebar-nav-link"><span class="sidebar-num">22</span>Audit & Explainability</a></li>
+        </ul>
+      </div>
+
+      <!-- Group 04: Validation -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>04 Validation</span>
+          <span>3</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-23-testing" onclick="window.RESQ.scrollToSection('sec-23-testing')" class="sidebar-nav-link"><span class="sidebar-num">23</span>Testing & Validation</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-24-comparison" onclick="window.RESQ.scrollToSection('sec-24-comparison')" class="sidebar-nav-link"><span class="sidebar-num">24</span>Existing vs RESQ-AGENT</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-25-techstack" onclick="window.RESQ.scrollToSection('sec-25-techstack')" class="sidebar-nav-link"><span class="sidebar-num">25</span>Technology Stack</a></li>
+        </ul>
+      </div>
+
+      <!-- Group 05: Demo -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>05 Demo & Roadmap</span>
+          <span>3</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-26-limitations" onclick="window.RESQ.scrollToSection('sec-26-limitations')" class="sidebar-nav-link"><span class="sidebar-num">26</span>Limitations & Risks</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-27-futurescope" onclick="window.RESQ.scrollToSection('sec-27-futurescope')" class="sidebar-nav-link"><span class="sidebar-num">27</span>Future Scope</a></li>
+          <li class="sidebar-nav-item"><a href="#sec-28-pitch" onclick="window.RESQ.scrollToSection('sec-28-pitch')" class="sidebar-nav-link"><span class="sidebar-num">28</span>Demo / Pitch Blueprint</a></li>
+        </ul>
+      </div>
+
+      <!-- Group 06: References -->
+      <div class="sidebar-category-block">
+        <div class="sidebar-category-header">
+          <span>06 References</span>
+          <span>1</span>
+        </div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item"><a href="#sec-29-references" onclick="window.RESQ.scrollToSection('sec-29-references')" class="sidebar-nav-link"><span class="sidebar-num">29</span>References / Library</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT VIEW -->
+    <main class="portal-main">
+
+      <!-- ==========================================================================
+           HERO SECTION
+           ========================================================================== -->
+      <header id="hero" class="hero-wrapper">
+        <div class="hero-meta-bar">
+          <span class="meta-pill meta-pill-accent">PS20 • KURUKSHETRA 2.0</span>
+          <span class="meta-pill">DOMAIN 1: AIML / AGENTIC AI / DATA SCIENCE</span>
+          <span class="meta-pill">OFFICIAL PRD SPECIFICATION v2.0</span>
+        </div>
+
+        <h1 class="hero-title">
+          RESQ-AGENT<br>
+          <span class="gradient-text">Disaster Relief Coordinator</span>
+        </h1>
+        <p class="hero-subtitle">
+          "Transparent, Deterministic Resource Coordination for Dynamic Disaster Response"
+        </p>
+
+        <p class="hero-statement">
+          From incoming disaster reports to explainable resource allocation — through a deterministic multi-agent coordination pipeline that guarantees zero hallucination, strict auditability, and immediate dynamic reallocation.
+        </p>
+
+        <!-- 6 Badges -->
+        <div class="hero-badges-strip">
+          <div class="hero-badge">RULE-BASED</div>
+          <div class="hero-badge">ZERO LLM</div>
+          <div class="hero-badge">OFFLINE-CAPABLE</div>
+          <div class="hero-badge">EXPLAINABLE</div>
+          <div class="hero-badge">DYNAMIC REALLOCATION</div>
+          <div class="hero-badge">AUDITABLE</div>
+        </div>
+
+        <!-- Live Statistics Counter (Connected to real state) -->
+        <div class="hero-stats-grid">
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Active Zones</span>
+            <span id="statActiveZones" class="hero-stat-val accent">3</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Resource Types</span>
+            <span id="statResourceTypes" class="hero-stat-val">4</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Agencies</span>
+            <span id="statAgencies" class="hero-stat-val">3</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Current Cycle</span>
+            <span id="statCycleId" class="hero-stat-val accent">cycle_001</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Active Allocations</span>
+            <span id="statActiveAllocations" class="hero-stat-val">0</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="hero-stat-label">Audit Events</span>
+            <span id="statAuditEvents" class="hero-stat-val">1</span>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" onclick="window.RESQ.scrollToSection('sec-05-solution')">
+            Explore Technical Solution
+          </button>
+          <button class="btn btn-live-pulse" onclick="window.RESQ.scrollToSection('sec-21-dashboard')">
+            Launch Live Prototype
+          </button>
+          <button class="btn btn-secondary" onclick="window.RESQ.scrollToSection('sec-10-datamodel')">
+            + Submit Zone Report
+          </button>
+          <button class="btn btn-secondary" onclick="window.RESQ.resetState()">
+            Reset Demo Data
+          </button>
+        </div>
+      </header>
+
+      <!-- ==========================================================================
+           SECTION 01: EXECUTIVE SUMMARY
+           ========================================================================== -->
+      <section id="sec-01-summary" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 01</span>
+          <h2 class="section-title">Executive Summary</h2>
+          <p class="section-lead">
+            Disaster situations involve multiple affected zones, incomplete and rapidly changing information, scarce food/medical/shelter/rescue resources, multiple operating agencies, and high risk of duplicated or misdirected effort.
+          </p>
+        </div>
+
+        <div class="callout-box alert">
+          <div class="callout-title">⚠️ SYSTEM ARCHITECTURAL MANDATE</div>
+          <p>
+            <strong>This prototype uses deterministic rule-based modules and does not use an external LLM.</strong><br>
+            All decisions, scoring, allocations, and explanations are produced through verifiable, explainable mathematical formulas and discrete logic tables.
+          </p>
+        </div>
+
+        <p style="color:var(--text-secondary); margin-bottom:16px;">
+          RESQ-AGENT coordinates dynamic emergency logistics through eight automated actions:
+        </p>
+
+        <div class="grid-4">
+          <div class="resq-card">
+            <div class="card-icon">📥</div>
+            <h4 class="card-title">1. Structured Intake</h4>
+            <p class="card-desc">Accepts and schema-validates incoming field reports from zone officers.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">📊</div>
+            <h4 class="card-title">2. Needs Assessment</h4>
+            <p class="card-desc">Normalizes raw incident attributes into categorized resource requirements.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">🧮</div>
+            <h4 class="card-title">3. Priority Scoring</h4>
+            <p class="card-desc">Evaluates transparent 0–100 priority scores using the official PS20 PRD formula.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">📦</div>
+            <h4 class="card-title">4. Resource Allocation</h4>
+            <p class="card-desc">Dispatches scarce stockpiles using a deterministic greedy 40% availability ceiling.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">🔍</div>
+            <h4 class="card-title">5. Duplicate Checker</h4>
+            <p class="card-desc">Detects overlapping agency commitments for identical resources within the cycle.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">⚡</div>
+            <h4 class="card-title">6. Dynamic Reallocation</h4>
+            <p class="card-desc">Instantly re-ranks and reallocates resources when a new high-severity report arrives.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">🚨</div>
+            <h4 class="card-title">7. Escalation Handler</h4>
+            <p class="card-desc">Automatically flags unmet critical demands when stockpile limits are breached.</p>
+          </div>
+          <div class="resq-card">
+            <div class="card-icon">📜</div>
+            <h4 class="card-title">8. Audit & Explain</h4>
+            <p class="card-desc">Generates plain-language justifications and records every action immutably.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 02: PROBLEM STATEMENT
+           ========================================================================== -->
+      <section id="sec-02-problem" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 02</span>
+          <h2 class="section-title">Problem Statement</h2>
+          <p class="section-lead">
+            Traditional emergency operations centers face compounding friction points when synchronizing response across independent agencies during severe disasters.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">⏳</span>
+              <h4 class="card-title">Information Delay</h4>
+            </div>
+            <p class="card-desc">Field conditions fluctuate minute-by-minute while communications remain fragmented across radios and paper logs.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">📉</span>
+              <h4 class="card-title">Resource Scarcity</h4>
+            </div>
+            <p class="card-desc">Multiple zones compete simultaneously for limited blood plasma, trauma kits, search equipment, and relief food.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">👥</span>
+              <h4 class="card-title">Manual Coordination</h4>
+            </div>
+            <p class="card-desc">Different NGOs, military units, and state agencies deploy independently without a shared real-time ledger.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">❓</span>
+              <h4 class="card-title">Priority Ambiguity</h4>
+            </div>
+            <p class="card-desc">Without a mathematically grounded triage formula, critical high-casualty sectors risk being deprioritized.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">🔁</span>
+              <h4 class="card-title">Duplicate Effort</h4>
+            </div>
+            <p class="card-desc">Two agencies inadvertently deliver the same supplies to one zone while an adjacent zone remains completely unserved.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">🌪️</span>
+              <h4 class="card-title">Changing Conditions</h4>
+            </div>
+            <p class="card-desc">A dam breach or aftershock suddenly shifts the epicenter, requiring immediate pipeline reallocation without manual recomputation.</p>
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top:24px;">
+          <div class="callout-title">Why Existing Manual Workflows Struggle</div>
+          <p>
+            Manual dispatch relies on phone calls, ad-hoc spreadsheets, and verbal briefing sessions. In dynamic disasters, human coordinators cannot track multi-factor priority weights, calculate remaining stockpile percentages, or detect cross-agency duplicates before trucks depart depots.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 03: DISASTER RESPONSE CHALLENGE
+           ========================================================================== -->
+      <section id="sec-03-challenge" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 03</span>
+          <h2 class="section-title">Disaster Response Challenge</h2>
+          <p class="section-lead">
+            Operational constraints in severe emergency response environments dictate strict technical boundaries.
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Challenge Domain</th>
+                <th>Field Condition</th>
+                <th>Engineering Mitigation in RESQ-AGENT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Network Outages</strong></td>
+                <td>Cell towers and internet backhauls fail frequently.</td>
+                <td>100% offline-capable, client-side runtime with localStorage state persistence. Zero cloud AI calls.</td>
+              </tr>
+              <tr>
+                <td><strong>High Stress & Human Error</strong></td>
+                <td>Dispatchers make arithmetic mistakes under fatigue.</td>
+                <td>Deterministic Priority Scoring Agent evaluates transparent 0–100 scores automatically.</td>
+              </tr>
+              <tr>
+                <td><strong>Conflicting Jurisdictions</strong></td>
+                <td>Civil Defence, Red Cross, and NDRF use different codes.</td>
+                <td>Standardized schema: Zone ID, Casualties, Population, Damage Level, and Resource Units.</td>
+              </tr>
+              <tr>
+                <td><strong>Stockpile Depletion</strong></td>
+                <td>Early zones claim 100% of stock, starving later zones.</td>
+                <td>Greedy capped 40% rule guarantees stockpile conservation across sequential priority cycles.</td>
+              </tr>
+              <tr>
+                <td><strong>Accountability Demands</strong></td>
+                <td>Post-disaster audits question why Zone A got aid before Zone B.</td>
+                <td>Immutable audit logs with plain-language mathematical justifications for every decision.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 04: OBJECTIVES
+           ========================================================================== -->
+      <section id="sec-04-objectives" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 04</span>
+          <h2 class="section-title">System Objectives</h2>
+          <p class="section-lead">
+            Ten concrete operational capabilities guaranteed by the RESQ-AGENT platform:
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="resq-card">
+            <h4 class="card-title">1. Structured Incident Intake</h4>
+            <p class="card-desc">Standardized JSON-based ingestion validating casualties, population, damage grade, and requested units.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">2. Live Inventory Management</h4>
+            <p class="card-desc">Real-time tracking of available vs committed units across Food, Medical, Shelter, and Rescue stockpiles.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">3. Transparent 0–100 Priority Scoring</h4>
+            <p class="card-desc">Multi-criteria ranking integrating casualty severity, affected population, infrastructure damage, and unserved time.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">4. Deterministic Resource Allocation</h4>
+            <p class="card-desc">Strictly reproducible dispatch logic preventing negative inventory and over-commitment.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">5. Automatic Dynamic Reallocation</h4>
+            <p class="card-desc">Immediate pipeline re-evaluation upon injection of secondary or escalated incident reports.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">6. Duplicate-Effort Detection</h4>
+            <p class="card-desc">Automated composite key scanning to prevent multiple agencies from redundantly saturating the same zone.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">7. Inter-Agency Coordination</h4>
+            <p class="card-desc">Shared real-time task allocation board synchronizing NDRF, Red Cross, and Civil Defence deployments.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">8. Escalation of Unmet Needs</h4>
+            <p class="card-desc">Automated alert generation when available inventory fails to satisfy priority-ranked requirements.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">9. Explainable Audit Trail</h4>
+            <p class="card-desc">Chronological, immutable ledger translating algorithmic actions into natural language rationale.</p>
+          </div>
+          <div class="resq-card">
+            <h4 class="card-title">10. Live Coordination Dashboard</h4>
+            <p class="card-desc">Single-pane command-center interface displaying zone rankings, alerts, and allocation statuses.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 05: PROPOSED SOLUTION (INTERACTIVE PIPELINE)
+           ========================================================================== -->
+      <section id="sec-05-solution" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 05</span>
+          <h2 class="section-title">Proposed Solution Architecture</h2>
+          <p class="section-lead">
+            Click any agent module node below to inspect its operational role, data inputs, and launch its dedicated interface:
+          </p>
+        </div>
+
+        <div class="callout-box success">
+          <div class="callout-title">✓ DETERMINISTIC MULTI-AGENT SPECIFICATION</div>
+          <p>
+            <strong>Agents are implemented as deterministic JavaScript modules/functions with clearly separated responsibilities.</strong> They communicate through shared state transitions and do NOT rely on external LLMs or stochastic neural APIs.
+          </p>
+        </div>
+
+        <!-- Interactive Flowchart Diagram -->
+        <div class="realloc-timeline-flow">
+          <div class="realloc-node arch-node active-step" data-node="report" onclick="window.RESQ.selectArchitectureNode('report')">
+            <div class="realloc-node-title">Agent 1</div>
+            <div class="realloc-node-val">Zone Report</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="needs" onclick="window.RESQ.selectArchitectureNode('needs')">
+            <div class="realloc-node-title">Agent 2</div>
+            <div class="realloc-node-val">Needs Assess</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="priority" onclick="window.RESQ.selectArchitectureNode('priority')">
+            <div class="realloc-node-title">Agent 3</div>
+            <div class="realloc-node-val">Priority Score</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="allocation" onclick="window.RESQ.selectArchitectureNode('allocation')">
+            <div class="realloc-node-title">Agent 4</div>
+            <div class="realloc-node-val">Allocation</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="duplicate" onclick="window.RESQ.selectArchitectureNode('duplicate')">
+            <div class="realloc-node-title">Agent 5</div>
+            <div class="realloc-node-val">Duplicate Check</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="audit" onclick="window.RESQ.selectArchitectureNode('audit')">
+            <div class="realloc-node-title">Agent 6</div>
+            <div class="realloc-node-val">Audit Logger</div>
+          </div>
+          <span class="realloc-arrow">→</span>
+          <div class="realloc-node arch-node" data-node="dashboard" onclick="window.RESQ.selectArchitectureNode('dashboard')">
+            <div class="realloc-node-title">Output</div>
+            <div class="realloc-node-val">Dashboard</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Architecture Node Detail Drawer -->
+        <div id="archDetailDrawer" class="arch-detail-drawer">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 06: CORE REQUIREMENTS MATRIX
+           ========================================================================== -->
+      <section id="sec-06-requirements" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 06</span>
+          <h2 class="section-title">Core Requirements Matrix</h2>
+          <p class="section-lead">
+            Validation matrix tracking the 10 PS20 PRD requirements against implementation and interactive demos:
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>Implementation Module</th>
+                <th>Visible Demo Section</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Incident / Zone Reporting</strong></td>
+                <td><code>ReportIntakeModule.ingestReport()</code></td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-10-datamodel')" style="color:var(--accent-cyan); cursor:pointer;">Section 10: Intake Form</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Resource Inventory Management</strong></td>
+                <td><code>state.inventory</code> with zero-floor protections</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-17-inventory')" style="color:var(--accent-cyan); cursor:pointer;">Section 17: Inventory Manager</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Needs Assessment</strong></td>
+                <td><code>NeedsAssessmentModule.assessZone()</code></td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-11-needs-agent')" style="color:var(--accent-cyan); cursor:pointer;">Section 11: Needs Explorer</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Allocation / Optimization</strong></td>
+                <td><code>AllocationEngineModule.runAllocationCycle()</code></td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-19-sim-allocation')" style="color:var(--accent-cyan); cursor:pointer;">Section 19: Allocation Simulator</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Inter-Agency Coordination</strong></td>
+                <td>Agency task distribution & multi-agency ledger</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-16-interagency')" style="color:var(--accent-cyan); cursor:pointer;">Section 16: Agency Board</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Dynamic Reallocation</strong></td>
+                <td>Pipeline re-ranking on report injection</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-14-reallocation')" style="color:var(--accent-cyan); cursor:pointer;">Section 14: Dynamic Reallocation</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Priority / Severity Scoring</strong></td>
+                <td>Official PRD 4-factor normalization formula</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-18-sim-priority')" style="color:var(--accent-cyan); cursor:pointer;">Section 18: Priority Simulator</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Duplicate-Effort Detection</strong></td>
+                <td>Composite key collision detection</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-15-duplicate')" style="color:var(--accent-cyan); cursor:pointer;">Section 15: Duplicate Alert</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Coordination Dashboard</strong></td>
+                <td>Real-time command-center zone cards</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-21-dashboard')" style="color:var(--accent-cyan); cursor:pointer;">Section 21: Live Dashboard</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Activity / Audit Log</strong></td>
+                <td>Immutable chronological explainability log</td>
+                <td><a onclick="window.RESQ.scrollToSection('sec-22-audit')" style="color:var(--accent-cyan); cursor:pointer;">Section 22: Audit Trail</a></td>
+                <td><span class="status-chip stable">VERIFIED</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 07: USERS & PERSONAS
+           ========================================================================== -->
+      <section id="sec-07-personas" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 07</span>
+          <h2 class="section-title">Users & Personas</h2>
+          <p class="section-lead">
+            Stakeholder requirements served by the platform's multi-tier coordination model:
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">🎖️</span>
+              <div>
+                <h4 class="card-title">Emergency Operations Coordinator</h4>
+                <span class="meta-pill">Strategic Authority</span>
+              </div>
+            </div>
+            <p class="card-desc"><strong>Need:</strong> Global situational awareness across all zones, guaranteed fair allocation of scarce stockpiles, and immediate notification when multi-agency conflicts occur.</p>
+            <p class="card-desc" style="margin-top:8px; color:var(--accent-cyan);"><strong>How RESQ-AGENT Helps:</strong> Provides a single unified dashboard with transparent priority rankings, automated duplicate alerts, and 1-click cycle execution.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">📡</span>
+              <div>
+                <h4 class="card-title">Field Reporter / Zone Officer</h4>
+                <span class="meta-pill">Frontline Responder</span>
+              </div>
+            </div>
+            <p class="card-desc"><strong>Need:</strong> Simple, rapid transmission of casualty counts, population numbers, and damage levels without cumbersome forms or connectivity requirements.</p>
+            <p class="card-desc" style="margin-top:8px; color:var(--accent-cyan);"><strong>How RESQ-AGENT Helps:</strong> Standardized incident schema with deterministic needs normalization and instant feedback on priority ranking.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">🚑</span>
+              <div>
+                <h4 class="card-title">Responding Agency / NGO Lead</h4>
+                <span class="meta-pill">Execution Partner</span>
+              </div>
+            </div>
+            <p class="card-desc"><strong>Need:</strong> Clear sector assignments, knowing which supply types are needed, and confirmation that another agency is not already deploying to the same spot.</p>
+            <p class="card-desc" style="margin-top:8px; color:var(--accent-cyan);"><strong>How RESQ-AGENT Helps:</strong> Shared coordination board with duplicate-effort detection to prevent wasted trips and logistical clashes.</p>
+          </div>
+
+          <div class="resq-card">
+            <div class="card-icon-title">
+              <span class="card-icon">⚖️</span>
+              <div>
+                <h4 class="card-title">Judge / Hackathon Evaluator</h4>
+                <span class="meta-pill">Audit & Verification</span>
+              </div>
+            </div>
+            <p class="card-desc"><strong>Need:</strong> Proof that the multi-agent system is completely explainable, uses the exact PRD formula, operates deterministically, and handles edge cases reliably.</p>
+            <p class="card-desc" style="margin-top:8px; color:var(--accent-cyan);"><strong>How RESQ-AGENT Helps:</strong> 10 automated test cases, step-by-step scenario runner, interactive formula simulator, and mathematical breakdowns.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 08: SYSTEM WORKFLOW
+           ========================================================================== -->
+      <section id="sec-08-workflow" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 08</span>
+          <h2 class="section-title">System Workflow & Cycle Concept</h2>
+          <p class="section-lead">
+            Every operational pass produces a distinct <code>cycle_id</code> (e.g. <code>cycle_001</code>, <code>cycle_002</code>), ensuring complete historical traceability of resource states.
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Step #</th>
+                <th>Workflow Phase</th>
+                <th>Trigger & Operation</th>
+                <th>State Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="code-cell">01</td>
+                <td><strong>Report Submission</strong></td>
+                <td>Field officer submits incident JSON payload.</td>
+                <td>New <code>report_id</code> recorded in <code>state.reports</code>.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">02</td>
+                <td><strong>Zone State Update</strong></td>
+                <td>Zone metrics updated (casualties, population, damage).</td>
+                <td>Zone attributes upserted in <code>state.zones</code>.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">03</td>
+                <td><strong>Needs Normalization</strong></td>
+                <td>Heuristic agent evaluates food, medical, shelter, rescue.</td>
+                <td><code>zone.requested</code> and <code>zone.pending</code> populated.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">04</td>
+                <td><strong>Priority Calculation</strong></td>
+                <td>Official PRD formula calculates 0–100 score.</td>
+                <td><code>zone.priorityScore</code> and factor breakdown stored.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">05</td>
+                <td><strong>Zone Queue Ranking</strong></td>
+                <td>Active zones sorted descending by Priority Score.</td>
+                <td>Deterministic dispatch queue established.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">06</td>
+                <td><strong>Resource Allocation</strong></td>
+                <td>Stock distributed with greedy 40% availability cap.</td>
+                <td>Stock decremented; Allocation rows created.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">07</td>
+                <td><strong>Duplicate Checking</strong></td>
+                <td>Composite key scan for multi-agency overlap.</td>
+                <td>Conflicting rows flagged with <code>duplicate: true</code>.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">08</td>
+                <td><strong>Escalation Generation</strong></td>
+                <td>Unmet priority needs identified and flagged.</td>
+                <td>Escalation records recorded; zone status set to RED.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">09</td>
+                <td><strong>Audit Logging</strong></td>
+                <td>Plain-language explanations recorded.</td>
+                <td>Immutable entry appended to <code>state.auditLogs</code>.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">10</td>
+                <td><strong>Dashboard Synchronized</strong></td>
+                <td>UI re-rendered with new cycle data.</td>
+                <td>DOM synchronized with latest localStorage state.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 09: MULTI-AGENT ARCHITECTURE
+           ========================================================================== -->
+      <section id="sec-09-architecture" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 09</span>
+          <h2 class="section-title">Multi-Agent Architecture</h2>
+          <p class="section-lead">
+            Detailed breakdown of the six specialized rule-based agent modules. Click any card to launch its live tool:
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-10-datamodel')">
+            <span class="meta-pill">AGENT 1</span>
+            <h4 class="card-title" style="margin-top:8px;">Report Intake Agent</h4>
+            <p class="card-desc">Enforces JSON schema integrity, validates numeric bounds, and registers zone updates into central state.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Open Intake Form →</span>
+          </div>
+
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-11-needs-agent')">
+            <span class="meta-pill">AGENT 2</span>
+            <h4 class="card-title" style="margin-top:8px;">Needs Assessment Agent</h4>
+            <p class="card-desc">Deterministic heuristic engine mapping incident metrics into categorized requirements across 4 supply vectors.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Open Needs Explorer →</span>
+          </div>
+
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-18-sim-priority')">
+            <span class="meta-pill">AGENT 3</span>
+            <h4 class="card-title" style="margin-top:8px;">Priority Scoring Engine</h4>
+            <p class="card-desc">Evaluates the official 4-factor PS20 formula, normalizes scores against batch maxima, and produces queue order.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Launch Priority Simulator →</span>
+          </div>
+
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-19-sim-allocation')">
+            <span class="meta-pill">AGENT 4</span>
+            <h4 class="card-title" style="margin-top:8px;">Resource Allocation Agent</h4>
+            <p class="card-desc">Enforces the greedy capped 40% rule, decrements warehouse inventory safely (zero floor), and creates allocation rows.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Run Allocation Engine →</span>
+          </div>
+
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-15-duplicate')">
+            <span class="meta-pill">AGENT 5</span>
+            <h4 class="card-title" style="margin-top:8px;">Duplicate-Effort Checker</h4>
+            <p class="card-desc">Composite key inspector flagging duplicate dispatches between different agencies for the same supply in the same cycle.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Test Duplicate Conflicts →</span>
+          </div>
+
+          <div class="resq-card" style="cursor:pointer;" onclick="window.RESQ.scrollToSection('sec-22-audit')">
+            <span class="meta-pill">AGENT 6</span>
+            <h4 class="card-title" style="margin-top:8px;">Audit Logger Agent</h4>
+            <p class="card-desc">Generates plain-language explainability strings and maintains an immutable audit trail for post-incident reviews.</p>
+            <span style="font-size:0.75rem; color:var(--accent-cyan); margin-top:8px; display:inline-block;">Inspect Audit Ledger →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 10: DATA MODEL & INCIDENT INTAKE FORM (INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-10-datamodel" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 10</span>
+          <h2 class="section-title">Data Model & Live Incident Intake</h2>
+          <p class="section-lead">
+            Submit a live incident report below. The intake agent will validate schema, upsert the zone, recalculate priorities, and update the dashboard in real-time:
+          </p>
+        </div>
+
+        <div class="sim-container" style="margin-bottom:28px;">
+          <div class="sim-header-bar">
+            <div class="sim-title-group">
+              <h4>Interactive Incident Report Submission Form</h4>
+              <p>Direct intake into ReportIntakeModule (Zero Page Reload)</p>
+            </div>
+          </div>
+
+          <form id="incidentReportForm" onsubmit="window.RESQ.submitReportForm(event)">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Zone Name:</label>
+                <input type="text" id="repZoneName" class="form-control" placeholder="e.g. North Haven Sector" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Assigned Responding Agency:</label>
+                <select id="repAgency" class="form-control">
+                  <option value="AG-NDRF">Govt-Relief (NDRF)</option>
+                  <option value="AG-REDX">Red-Cross-NGO</option>
+                  <option value="AG-SDRF">State-Disaster-Force</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-3" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px;">
+              <div class="form-group">
+                <label class="form-label">Affected Population:</label>
+                <input type="number" id="repPop" class="form-control" min="1" max="100000" value="3500" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Casualties Count:</label>
+                <input type="number" id="repCas" class="form-control" min="0" max="10000" value="28" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Structural Damage Grade:</label>
+                <select id="repDmg" class="form-control">
+                  <option value="LOW">LOW (20 pts)</option>
+                  <option value="MEDIUM" selected>MEDIUM (60 pts)</option>
+                  <option value="HIGH">HIGH (100 pts)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Hours Unserved:</label>
+                <input type="number" id="repHours" class="form-control" min="0" max="72" value="8" required>
+              </div>
+            </div>
+
+            <div style="margin:14px 0 6px 0; font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+              Requested Supplies (Initial Requisition):
+            </div>
+
+            <div class="form-grid-4">
+              <div class="form-group">
+                <label class="form-label">Food (kits):</label>
+                <input type="number" id="repFood" class="form-control" min="0" value="200">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Medical (kits):</label>
+                <input type="number" id="repMed" class="form-control" min="0" value="90">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Shelter (units):</label>
+                <input type="number" id="repShelter" class="form-control" min="0" value="120">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Rescue (teams):</label>
+                <input type="number" id="repRescue" class="form-control" min="0" value="4">
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:10px;">
+              <button type="submit" class="btn btn-primary">
+                📥 Validate & Submit Incident Report
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card">
+            <h4 class="card-title">ZONE Entity Schema</h4>
+            <div class="formula-math-card">
+              zone_id: string<br>
+              name: string<br>
+              population: number<br>
+              casualties: number<br>
+              damage_level: 'LOW'|'MEDIUM'|'HIGH'<br>
+              hours_since_aid: number<br>
+              status: 'critical'|'warning'|'stable'<br>
+              requested: Object<br>
+              allocated: Object<br>
+              pending: Object
+            </div>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">REPORT Entity Schema</h4>
+            <div class="formula-math-card">
+              report_id: string<br>
+              zone_id: string<br>
+              timestamp: string<br>
+              casualties: number<br>
+              population: number<br>
+              damage_level: string<br>
+              resources_requested: Object<br>
+              agency_id: string
+            </div>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">ALLOCATION Entity Schema</h4>
+            <div class="formula-math-card">
+              allocation_id: string<br>
+              cycle_id: string<br>
+              zone_id: string<br>
+              resource_type: string<br>
+              units_allocated: number<br>
+              agency_id: string<br>
+              rule_triggered: string<br>
+              duplicate: boolean
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 11: NEEDS ASSESSMENT AGENT (INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-11-needs-agent" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 11</span>
+          <h2 class="section-title">Needs Assessment Agent</h2>
+          <p class="section-lead">
+            Select an operational zone to inspect its rule-derived normalized requirement vector:
+          </p>
+        </div>
+
+        <div class="sim-container">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+            <div>
+              <label class="form-label" style="margin-bottom:4px;">Select Zone to Inspect:</label>
+              <select id="needsZoneSelect" class="form-control" style="width:340px;"></select>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.RESQ.scrollToSection('sec-10-datamodel')">
+              + Ingest New Zone First
+            </button>
+          </div>
+
+          <div id="needsResultDisplay"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 12: PRIORITY SCORING ENGINE
+           ========================================================================== -->
+      <section id="sec-12-priority-engine" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 12</span>
+          <h2 class="section-title">Priority Scoring Engine</h2>
+          <p class="section-lead">
+            The official, mathematically rigorous PS20 PRD formula implemented in RESQ-AGENT:
+          </p>
+        </div>
+
+        <div class="callout-box alert">
+          <div class="callout-title">OFFICIAL PS20 PRD FORMULA SPECIFICATION</div>
+          <div style="font-family:var(--font-mono); font-size:1.15rem; color:#fff; margin:12px 0;">
+            <strong>Priority Score</strong> = 
+            <span style="color:var(--accent-orange);">0.40 × CasualtyScore</span> + 
+            <span style="color:var(--accent-cyan);">0.25 × PopulationScore</span> + 
+            <span style="color:var(--accent-red);">0.20 × DamageScore</span> + 
+            <span style="color:var(--accent-green);">0.15 × TimeSinceLastAidScore</span>
+          </div>
+          <p style="font-size:0.85rem; color:#cbd5e1;">
+            Final Score is bounded strictly between <strong>0.0 and 100.0</strong>.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="resq-card">
+            <h4 class="card-title">1. CasualtyScore (Weight: 40%)</h4>
+            <p class="card-desc">
+              Normalized against the maximum casualties seen in the current active batch/cycle:<br>
+              <code>min(100, (casualties / max_casualties_seen) × 100)</code><br>
+              <em>If max casualties is 0, score is strictly 0.0.</em>
+            </p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">2. PopulationScore (Weight: 25%)</h4>
+            <p class="card-desc">
+              Normalized against a regional scale benchmark of 10,000 residents:<br>
+              <code>min(100, (population / 10,000) × 100)</code><br>
+              <em>Capped at 100.0 for dense urban zones.</em>
+            </p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">3. DamageScore (Weight: 20%)</h4>
+            <p class="card-desc">
+              Discrete infrastructure destruction mapping:<br>
+              • <strong>LOW</strong> = 20.0<br>
+              • <strong>MEDIUM</strong> = 60.0<br>
+              • <strong>HIGH</strong> = 100.0
+            </p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">4. TimeSinceLastAidScore (Weight: 15%)</h4>
+            <p class="card-desc">
+              Escalates priority for zones suffering prolonged neglect:<br>
+              <code>min(100, hours_since_last_aid × 5)</code><br>
+              <em>Reaches maximum urgency cap of 100.0 after 20 hours unserved.</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 13: RESOURCE ALLOCATION ENGINE
+           ========================================================================== -->
+      <section id="sec-13-allocation-engine" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 13</span>
+          <h2 class="section-title">Resource Allocation Engine</h2>
+          <p class="section-lead">
+            The official deterministic allocation algorithm dispatches scarce resources in strict priority order under inventory protection caps:
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Algorithm Operation</th>
+                <th>Formula / Constraint</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Priority Sorting</td>
+                <td>Sort active operational zones descending by Priority Score.</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Greedy Capped 40% Allocation</td>
+                <td><code>allocate = min(units_requested, 0.40 × available_units, remaining_need)</code></td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Stock Decrement</td>
+                <td><code>available_units = available_units - allocate</code> (Guaranteed Zero Floor)</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Ledger Commitment</td>
+                <td>Generate Allocation row with <code>rule_triggered = 'greedy-capped-40pct'</code></td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Escalation Check</td>
+                <td>If <code>remaining_need &gt; 0</code>, raise automated ESCALATION alert.</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Agency Assignment</td>
+                <td>Assign responding agency in round-robin order across registered services.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 14: DYNAMIC REALLOCATION (INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-14-reallocation" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 14</span>
+          <h2 class="section-title">Dynamic Reallocation</h2>
+          <p class="section-lead">
+            Demonstrating automatic pipeline re-evaluation when high-severity disaster events emerge dynamically:
+          </p>
+        </div>
+
+        <div class="sim-container">
+          <div class="sim-header-bar">
+            <div class="sim-title-group">
+              <h4>Interactive Dynamic Reallocation Trigger</h4>
+              <p>Simulates the sudden emergence of a flash-flood in Riverside Village (Z-04)</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.RESQ.triggerDynamicReallocation()">
+              ⚡ Simulate New High-Priority Report (Z-04)
+            </button>
+          </div>
+
+          <div id="reallocStatusDisplay">
+            <p style="color:var(--text-secondary); font-size:0.88rem;">
+              Click the button above to inject a high-casualty report (72 casualties, HIGH damage, 2,800 displaced). The system will recalculate all zone priorities, advance the allocation cycle, and re-rank the dispatch queue.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 15: DUPLICATE-EFFORT DETECTION (INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-15-duplicate" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 15</span>
+          <h2 class="section-title">Duplicate-Effort Detection</h2>
+          <p class="section-lead">
+            Detects when multiple agencies commit identical resources to the same zone within the same cycle:
+          </p>
+        </div>
+
+        <!-- Flashing Emergency Banner -->
+        <div id="duplicateAlertBanner" class="duplicate-alert-banner" style="display:none;"></div>
+
+        <div class="sim-container">
+          <div class="sim-header-bar">
+            <div class="sim-title-group">
+              <h4>Duplicate Conflict Simulator</h4>
+              <p>Simulates overlapping dispatch by Govt-Relief and Red-Cross for identical supplies</p>
+            </div>
+            <button class="btn btn-secondary" onclick="window.RESQ.simulateDuplicate()">
+              ⚠️ Simulate Duplicate Commitment
+            </button>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">
+            The duplicate checker monitors composite keys <code>cycle_id::zone_id::resource_type</code>. When two agencies clash, the system alerts the operations coordinator to manually resolve which agency proceeds.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 16: INTER-AGENCY COORDINATION
+           ========================================================================== -->
+      <section id="sec-16-interagency" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 16</span>
+          <h2 class="section-title">Inter-Agency Coordination Board</h2>
+          <p class="section-lead">
+            Shared multi-agency ledger coordinating public and humanitarian responders:
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card">
+            <span class="meta-pill">AG-NDRF</span>
+            <h4 class="card-title" style="margin-top:8px;">Govt-Relief (NDRF)</h4>
+            <p class="card-desc">Specialized in heavy amphibious search and rescue, flood extractions, and trauma stabilization.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">AG-REDX</span>
+            <h4 class="card-title" style="margin-top:8px;">Red-Cross-NGO</h4>
+            <p class="card-desc">Focused on emergency field hospitals, blood plasma distribution, and displaced family sheltering.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">AG-SDRF</span>
+            <h4 class="card-title" style="margin-top:8px;">State-Disaster-Force</h4>
+            <p class="card-desc">Coordinates bulk ration packets, clean drinking water filtration, and perimeter security.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 17: RESOURCE INVENTORY (INTERACTIVE MANAGER)
+           ========================================================================== -->
+      <section id="sec-17-inventory" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 17</span>
+          <h2 class="section-title">Resource Inventory Manager</h2>
+          <p class="section-lead">
+            Live warehouse stockpile tracking connected directly to the allocation engine. Adjust quantities or test scarcity:
+          </p>
+        </div>
+
+        <div class="sim-header-bar" style="border:none; padding:0; margin-bottom:14px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" onclick="window.RESQ.depleteMedical()">
+              ⚠️ Test Scarcity: Deplete Medical to 20 units
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="window.RESQ.restockAll()">
+              ✓ Replenish All Stockpiles (100%)
+            </button>
+          </div>
+        </div>
+
+        <div id="inventoryGrid" class="inventory-stock-grid"></div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 18: PRIORITY SIMULATOR (INTERACTIVE 5-INPUTS)
+           ========================================================================== -->
+      <section id="sec-18-sim-priority" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 18</span>
+          <h2 class="section-title">Interactive Priority Simulator</h2>
+          <p class="section-lead">
+            Test the official PS20 PRD formula in real-time by adjusting operational parameters (sliders and numbers are synced):
+          </p>
+        </div>
+
+        <div class="sim-container">
+          <div class="grid-2">
+            <!-- Left: Inputs -->
+            <div>
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Affected Population:</span>
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span id="simPopVal" class="val-display">5,000</span>
+                    <input type="number" id="simPopNum" class="form-control" style="width:85px; padding:2px 6px; font-size:0.75rem;" value="5000" min="100" max="25000">
+                  </div>
+                </div>
+                <input type="range" id="simPop" class="form-range" min="100" max="25000" step="100" value="5000">
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Casualties Count:</span>
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span id="simCasVal" class="val-display">50</span>
+                    <input type="number" id="simCasNum" class="form-control" style="width:70px; padding:2px 6px; font-size:0.75rem;" value="50" min="0" max="150">
+                  </div>
+                </div>
+                <input type="range" id="simCas" class="form-range" min="0" max="150" step="1" value="50">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  <span>Structural Damage Level:</span>
+                </label>
+                <select id="simDmg" class="form-control">
+                  <option value="LOW">LOW (20 points)</option>
+                  <option value="MEDIUM">MEDIUM (60 points)</option>
+                  <option value="HIGH" selected>HIGH (100 points)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Hours Since Last Aid:</span>
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span id="simTimeVal" class="val-display">10 hrs</span>
+                    <input type="number" id="simTimeNum" class="form-control" style="width:70px; padding:2px 6px; font-size:0.75rem;" value="10" min="0" max="36">
+                  </div>
+                </div>
+                <input type="range" id="simTime" class="form-range" min="0" max="36" step="1" value="10">
+              </div>
+
+              <div class="form-group">
+                <div class="form-label">
+                  <span>Batch Max Casualties Seen:</span>
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span id="simMaxCasVal" class="val-display">100</span>
+                    <input type="number" id="simMaxCasNum" class="form-control" style="width:70px; padding:2px 6px; font-size:0.75rem;" value="100" min="10" max="150">
+                  </div>
+                </div>
+                <input type="range" id="simMaxCas" class="form-range" min="10" max="150" step="1" value="100">
+              </div>
+            </div>
+
+            <!-- Right: Calculation & Breakdown -->
+            <div>
+              <div class="score-hero-display">
+                <span class="score-hero-label">Calculated Priority Score</span>
+                <div id="simHeroScore" class="score-hero-number">60.0</div>
+                <span style="font-size:0.75rem; color:var(--text-muted);">Exact Range: 0.0 to 100.0</span>
+              </div>
+
+              <div class="component-bars-list">
+                <div class="comp-bar-item">
+                  <div class="comp-bar-label">
+                    <span>Casualties (40%):</span>
+                    <span id="barCasVal">50.0 / 100</span>
+                  </div>
+                  <div class="progress-track"><div id="barCas" class="progress-fill fill-red" style="width:50%;"></div></div>
+                </div>
+
+                <div class="comp-bar-item">
+                  <div class="comp-bar-label">
+                    <span>Population (25%):</span>
+                    <span id="barPopVal">50.0 / 100</span>
+                  </div>
+                  <div class="progress-track"><div id="barPop" class="progress-fill fill-cyan" style="width:50%;"></div></div>
+                </div>
+
+                <div class="comp-bar-item">
+                  <div class="comp-bar-label">
+                    <span>Damage (20%):</span>
+                    <span id="barDmgVal">100.0 / 100</span>
+                  </div>
+                  <div class="progress-track"><div id="barDmg" class="progress-fill fill-orange" style="width:100%;"></div></div>
+                </div>
+
+                <div class="comp-bar-item">
+                  <div class="comp-bar-label">
+                    <span>Time Unserved (15%):</span>
+                    <span id="barTimeVal">50.0 / 100</span>
+                  </div>
+                  <div class="progress-track"><div id="barTime" class="progress-fill fill-green" style="width:50%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mathematical Formula Output -->
+          <div class="formula-math-card" id="simFormulaOutput"></div>
+
+          <!-- Natural Language Explanation Box -->
+          <div class="callout-box" style="margin-top:16px;">
+            <div class="callout-title">Why This Zone Received This Score</div>
+            <p id="simExplainOutput" style="color:#f8fafc; font-size:0.85rem;"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 19: ALLOCATION SIMULATOR (INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-19-sim-allocation" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 19</span>
+          <h2 class="section-title">Allocation Simulator</h2>
+          <p class="section-lead">
+            Executes a full dispatch cycle, decrementing inventory and generating allocation records:
+          </p>
+        </div>
+
+        <div class="sim-container">
+          <div class="sim-header-bar">
+            <div class="sim-title-group">
+              <h4>Dispatch Engine Runner</h4>
+              <p>Applies priority sorting & greedy 40% cap algorithm across all active zones</p>
+            </div>
+            <button class="btn btn-primary" onclick="window.RESQ.runAllocation()">
+              🚀 Run Allocation Cycle
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="resq-table">
+              <thead>
+                <tr>
+                  <th>Alloc ID</th>
+                  <th>Cycle</th>
+                  <th>Zone</th>
+                  <th>Resource</th>
+                  <th>Units</th>
+                  <th>Agency</th>
+                  <th>Rule Triggered</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="allocationsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 20: LIVE DISASTER SCENARIO (13 STEPS INTERACTIVE)
+           ========================================================================== -->
+      <section id="sec-20-scenario" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 20</span>
+          <h2 class="section-title">Live Disaster Scenario</h2>
+          <p class="section-lead">
+            Complete 13-step end-to-end interactive evaluation walkthrough for hackathon judges:
+          </p>
+        </div>
+
+        <div class="scenario-stepper-box">
+          <div class="scenario-steps-bar">
+            <div class="scenario-step-indicator active" onclick="window.RESQ.runScenarioStep(1)"><div class="step-circle">1</div><span class="step-circle-label">Seed</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(2)"><div class="step-circle">2</div><span class="step-circle-label">Report</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(3)"><div class="step-circle">3</div><span class="step-circle-label">Score</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(4)"><div class="step-circle">4</div><span class="step-circle-label">Rank</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(5)"><div class="step-circle">5</div><span class="step-circle-label">Alloc</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(6)"><div class="step-circle">6</div><span class="step-circle-label">Deploy</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(7)"><div class="step-circle">7</div><span class="step-circle-label">Update</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(8)"><div class="step-circle">8</div><span class="step-circle-label">Rerank</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(9)"><div class="step-circle">9</div><span class="step-circle-label">Conflict</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(10)"><div class="step-circle">10</div><span class="step-circle-label">Scarcity</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(11)"><div class="step-circle">11</div><span class="step-circle-label">Capped</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(12)"><div class="step-circle">12</div><span class="step-circle-label">Escalate</span></div>
+            <div class="scenario-step-indicator" onclick="window.RESQ.runScenarioStep(13)"><div class="step-circle">13</div><span class="step-circle-label">Audit</span></div>
+          </div>
+
+          <div class="scenario-active-display">
+            <span id="scenarioStepNum" class="meta-pill meta-pill-accent">Step 1 of 13</span>
+            <h4 id="scenarioStepTitle" style="color:#fff; margin:10px 0 6px 0; font-size:1.15rem;">Initial Seed Zones Active</h4>
+            <p id="scenarioStepDesc" style="color:var(--text-secondary); font-size:0.88rem;">System starts with 3 initial zones (Z-01, Z-02, Z-03) and 4 baseline warehouse stockpiles.</p>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-secondary" onclick="window.RESQ.runPrevScenarioStep()">
+              ← Previous Step
+            </button>
+            <button class="btn btn-primary" onclick="window.RESQ.runNextScenarioStep()">
+              Next Scenario Step →
+            </button>
+            <button class="btn btn-secondary" onclick="window.RESQ.resetState()">
+              Reset Demo Data
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 21: COORDINATION DASHBOARD
+           ========================================================================== -->
+      <section id="sec-21-dashboard" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 21</span>
+          <h2 class="section-title">Live Coordination Dashboard</h2>
+          <p class="section-lead">
+            Real-time command-center view of all active zones sorted by Priority Score descending:
+          </p>
+        </div>
+
+        <div class="sim-header-bar" style="border:none; padding:0; margin-bottom:14px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="window.RESQ.scrollToSection('sec-10-datamodel')">
+              + Submit Incident Report
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="window.RESQ.runAllocation()">
+              🚀 Run Allocation Cycle
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="window.RESQ.triggerDynamicReallocation()">
+              ⚡ Dynamic Reallocation
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="window.RESQ.simulateDuplicate()">
+              ⚠️ Duplicate Collision
+            </button>
+          </div>
+        </div>
+
+        <div id="dashboardZoneCards" class="grid-3">
+          <!-- Dynamically populated from real state -->
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 22: AUDIT & EXPLAINABILITY (FILTERABLE)
+           ========================================================================== -->
+      <section id="sec-22-audit" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 22</span>
+          <h2 class="section-title">Audit & Explainability</h2>
+          <p class="section-lead">
+            Chronological, immutable ledger translating every system action into plain-language rationale:
+          </p>
+        </div>
+
+        <div class="audit-container">
+          <div class="audit-filter-bar">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">FILTER TRAIL:</span>
+            <button class="filter-pill active" data-filter="ALL">ALL EVENTS</button>
+            <button class="filter-pill" data-filter="PRIORITY">PRIORITY</button>
+            <button class="filter-pill" data-filter="ALLOCATION">ALLOCATION</button>
+            <button class="filter-pill" data-filter="DUPLICATE">DUPLICATE</button>
+            <button class="filter-pill" data-filter="ESCALATION">ESCALATION</button>
+            <button class="filter-pill" data-filter="REPORT">REPORT</button>
+          </div>
+
+          <div class="audit-table">
+            <table class="resq-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Cycle</th>
+                  <th>Entity</th>
+                  <th>Action</th>
+                  <th>Rule Fired</th>
+                  <th>Plain-Language Explanation</th>
+                </tr>
+              </thead>
+              <tbody id="auditTableBody">
+                <!-- Dynamically populated from real state -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 23: TESTING & VALIDATION (10 TESTS)
+           ========================================================================== -->
+      <section id="sec-23-testing" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 23</span>
+          <h2 class="section-title">Testing & Validation Suite</h2>
+          <p class="section-lead">
+            Ten automated unit tests verifying formula boundary limits, zero-floor protections, and conflict detection:
+          </p>
+        </div>
+
+        <div class="sim-header-bar" style="border:none; padding:0; margin-bottom:14px;">
+          <div class="sim-title-group">
+            <span id="testSummaryCount" class="meta-pill meta-pill-accent" style="font-size:0.8rem;">10 / 10 READY</span>
+          </div>
+          <button class="btn btn-primary" onclick="window.RESQ.runAllTests()">
+            ▶ Run All 10 Automated Tests
+          </button>
+        </div>
+
+        <div class="tests-grid">
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 01: Zero Casualties Normalization</span>
+              <span class="test-desc">Casualty score evaluates strictly to 0.0 when casualties = 0.</span>
+            </div>
+            <span id="test-status-1" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 02: Maximum Casualties Cap</span>
+              <span class="test-desc">Casualties equal to batch max evaluates to 100.0 (40.0 pts).</span>
+            </div>
+            <span id="test-status-2" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 03: Damage Score Discrete Mapping</span>
+              <span class="test-desc">Verifies LOW=20, MEDIUM=60, HIGH=100 mapping.</span>
+            </div>
+            <span id="test-status-3" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 04: Time Unserved Capping at 100</span>
+              <span class="test-desc">Hours unserved × 5 caps strictly at 100.0 (15.0 pts).</span>
+            </div>
+            <span id="test-status-4" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 05: Population Scale Cap at 10,000</span>
+              <span class="test-desc">Population &ge; 10,000 caps population score at 100.0.</span>
+            </div>
+            <span id="test-status-5" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 06: Zero Floor Stock Protection</span>
+              <span class="test-desc">Inventory decrement never results in negative available units.</span>
+            </div>
+            <span id="test-status-6" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 07: Greedy 40% Availability Limit</span>
+              <span class="test-desc">Per-cycle single dispatch cannot exceed 40% of available stock.</span>
+            </div>
+            <span id="test-status-7" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 08: Duplicate Composite Key Collision</span>
+              <span class="test-desc">Detects two agencies assigned same supply in same zone.</span>
+            </div>
+            <span id="test-status-8" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 09: Deterministic Ranking Invariant</span>
+              <span class="test-desc">Re-running ranking on identical inputs yields identical queue order.</span>
+            </div>
+            <span id="test-status-9" class="test-status-badge pass">PASS</span>
+          </div>
+
+          <div class="test-item-card">
+            <div class="test-info">
+              <span class="test-name">Test 10: Unmet Demand Escalation Trigger</span>
+              <span class="test-desc">Generates escalation flag when stock cannot satisfy zone need.</span>
+            </div>
+            <span id="test-status-10" class="test-status-badge pass">PASS</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 24: EXISTING VS RESQ-AGENT
+           ========================================================================== -->
+      <section id="sec-24-comparison" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 24</span>
+          <h2 class="section-title">Existing vs RESQ-AGENT</h2>
+          <p class="section-lead">
+            Systematic comparison between traditional manual emergency operations and the RESQ-AGENT platform:
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Challenge Domain</th>
+                <th>Traditional / Manual Coordination</th>
+                <th>RESQ-AGENT Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Priority Determination</strong></td>
+                <td>Subjective triage based on phone seniority.</td>
+                <td>Transparent 0–100 formula integrating casualties, population, damage, and time.</td>
+              </tr>
+              <tr>
+                <td><strong>Resource Allocation</strong></td>
+                <td>First-come, first-served warehouse depletion.</td>
+                <td>Greedy capped 40% rule conserving stock for subsequent priority sectors.</td>
+              </tr>
+              <tr>
+                <td><strong>Changing Field Reports</strong></td>
+                <td>Manual spreadsheet re-entry with high latency.</td>
+                <td>Immediate automatic pipeline re-ranking upon report ingestion.</td>
+              </tr>
+              <tr>
+                <td><strong>Agency Overlap</strong></td>
+                <td>Discovered only when trucks arrive at the same depot.</td>
+                <td>Automated composite key checking flags duplicate commitments instantly.</td>
+              </tr>
+              <tr>
+                <td><strong>Scarcity Handling</strong></td>
+                <td>Late zones receive zero supplies without notice.</td>
+                <td>Automated escalation flags track unmet demand and trigger alert cascades.</td>
+              </tr>
+              <tr>
+                <td><strong>Decision Explainability</strong></td>
+                <td>Unclear reasons why one sector was prioritized.</td>
+                <td>Mathematical breakdowns and plain-language audit trails for every decision.</td>
+              </tr>
+              <tr>
+                <td><strong>Auditability</strong></td>
+                <td>Paper log sheets prone to loss and tampering.</td>
+                <td>Immutable, chronological log stored persistently with rule attribution.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 25: TECHNOLOGY STACK
+           ========================================================================== -->
+      <section id="sec-25-techstack" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 25</span>
+          <h2 class="section-title">Technology Stack</h2>
+          <p class="section-lead">
+            Documenting the real, lightweight technologies powering RESQ-AGENT:
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="resq-card">
+            <span class="meta-pill">MARKUP</span>
+            <h4 class="card-title" style="margin-top:8px;">HTML5 Semantic</h4>
+            <p class="card-desc">Accessible, standards-compliant structure designed for zero-dependency local browser rendering.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">STYLING</span>
+            <h4 class="card-title" style="margin-top:8px;">CSS3 Modern</h4>
+            <p class="card-desc">Custom properties, glassmorphism, responsive grid layouts, and dedicated <code>@media print</code> formatting.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">LOGIC</span>
+            <h4 class="card-title" style="margin-top:8px;">Vanilla ES6+ JS</h4>
+            <p class="card-desc">Pure deterministic JavaScript modules with zero external libraries, frameworks, or AI wrappers.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">STORAGE</span>
+            <h4 class="card-title" style="margin-top:8px;">localStorage API</h4>
+            <p class="card-desc">Browser-native persistence guaranteeing zero data loss across reloads while operating entirely offline.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 26: LIMITATIONS & RISKS
+           ========================================================================== -->
+      <section id="sec-26-limitations" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 26</span>
+          <h2 class="section-title">Limitations & Risks</h2>
+          <p class="section-lead">
+            Explicit PS20 hackathon non-goals and controlled operational boundaries:
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card">
+            <h4 class="card-title">No Live GIS / GPS Feeds</h4>
+            <p class="card-desc">The prototype models geographic sectors via discrete Zone IDs rather than live vector map tiles or satellite coordinates.</p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">No Real Telecom Ingestion</h4>
+            <p class="card-desc">Does not integrate live SMS, WhatsApp, or voice-radio transcription gateways; relies on structured report payloads.</p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">No Multi-Agency Auth</h4>
+            <p class="card-desc">Production authentication (OAuth/SAML) is mocked via agency identifier tags for hackathon demonstration clarity.</p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">No Free-Text NLP / LLM</h4>
+            <p class="card-desc">Avoids stochastic language models to guarantee zero hallucination, sub-second latency, and 100% mathematical auditability.</p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">Controlled Prototype Scale</h4>
+            <p class="card-desc">Optimized for regional operations centers handling dozens of disaster zones rather than nationwide concurrency.</p>
+          </div>
+
+          <div class="resq-card">
+            <h4 class="card-title">Deterministic Heuristics</h4>
+            <p class="card-desc">Allocation rules use transparent greedy 40% caps rather than complex NP-hard mixed-integer linear programming solvers.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 27: FUTURE SCOPE
+           ========================================================================== -->
+      <section id="sec-27-futurescope" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 27</span>
+          <h2 class="section-title">Future Scope</h2>
+          <p class="section-lead">
+            Architectural roadmap for post-hackathon enterprise hardening:
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="resq-card">
+            <span class="meta-pill">ROADMAP PHASE 1</span>
+            <h4 class="card-title" style="margin-top:8px;">GIS & Satellite Integration</h4>
+            <p class="card-desc">Ingest Copernicus and ISRO synthetic aperture radar imagery to automatically verify infrastructure damage grades.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">ROADMAP PHASE 2</span>
+            <h4 class="card-title" style="margin-top:8px;">Edge Mesh Networks</h4>
+            <p class="card-desc">Deploy peer-to-peer LoRaWAN mesh communication between field tablets to bypass destroyed cellular infrastructure.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">ROADMAP PHASE 3</span>
+            <h4 class="card-title" style="margin-top:8px;">MILP Optimization Engine</h4>
+            <p class="card-desc">Incorporate multi-depot vehicle routing (VRP) and mixed-integer linear programming for multi-commodity road transit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 28: DEMO / PITCH BLUEPRINT (INTERACTIVE STEPPER)
+           ========================================================================== -->
+      <section id="sec-28-pitch" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 28</span>
+          <h2 class="section-title">Demo / Pitch Blueprint</h2>
+          <p class="section-lead">
+            How to present RESQ-AGENT to hackathon judges in exactly 2 minutes:
+          </p>
+        </div>
+
+        <div class="sim-header-bar" style="border:none; padding:0; margin-bottom:14px;">
+          <button class="btn btn-primary" onclick="window.RESQ.runScenarioStep(1); window.RESQ.scrollToSection('sec-20-scenario');">
+            ▶ Start Guided 2-Minute Judge Walkthrough
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="resq-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Pitch Step</th>
+                <th>Live Action on Website</th>
+                <th>Judge Takeaway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="code-cell">00:00 - 00:20</td>
+                <td><strong>1. The Problem</strong></td>
+                <td>Point to Section 02 Problem Cards.</td>
+                <td>Disasters create chaotic, competing demands and duplicate dispatches.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">00:20 - 00:40</td>
+                <td><strong>2. The Formula</strong></td>
+                <td>Show Section 18 Priority Simulator sliders.</td>
+                <td>Explainable 4-factor formula (Casualties 40%, Pop 25%, Damage 20%, Time 15%).</td>
+              </tr>
+              <tr>
+                <td class="code-cell">00:40 - 01:00</td>
+                <td><strong>3. Dynamic Influx</strong></td>
+                <td>Click "Simulate New High-Priority Report" in Section 14.</td>
+                <td>Riverside Village (Z-04) instantly takes Rank #1 in real time.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">01:00 - 01:20</td>
+                <td><strong>4. Allocation & 40% Cap</strong></td>
+                <td>Click "Run Allocation Cycle" in Section 19.</td>
+                <td>Greedy 40% cap prevents inventory exhaustion, saving stock for later zones.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">01:20 - 01:40</td>
+                <td><strong>5. Duplicate Detection</strong></td>
+                <td>Click "Simulate Duplicate Commitment" in Section 15.</td>
+                <td>Flashing red alert shows two agencies overlapping; coordinator resolves it.</td>
+              </tr>
+              <tr>
+                <td class="code-cell">01:40 - 02:00</td>
+                <td><strong>6. Audit & Validation</strong></td>
+                <td>Show Section 22 Audit Trail & Section 23 10/10 Tests.</td>
+                <td>Zero hallucination, fully auditable, 100% verified deterministic code.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 29: REFERENCES / RESEARCH LIBRARY
+           ========================================================================== -->
+      <section id="sec-29-references" class="resq-section">
+        <div class="section-header">
+          <span class="section-num-tag">SECTION 29</span>
+          <h2 class="section-title">References & Research Library</h2>
+          <p class="section-lead">
+            Curated scientific and humanitarian frameworks grounding the RESQ-AGENT platform:
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="resq-card">
+            <span class="meta-pill">HUMANITARIAN STANDARDS</span>
+            <h4 class="card-title" style="margin-top:8px;">The Sphere Project Handbook (2018)</h4>
+            <p class="card-desc">Humanitarian Charter and Minimum Standards in Disaster Response. Defines per-capita daily water and food caloric minimums used in the Needs Assessment Agent.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">OPERATIONAL GUIDELINES</span>
+            <h4 class="card-title" style="margin-top:8px;">UN OCHA Disaster Response Guidelines</h4>
+            <p class="card-desc">United Nations Office for the Coordination of Humanitarian Affairs. Multi-agency on-site operations coordination center (OSOCC) procedural frameworks.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">NATIONAL FRAMEWORK</span>
+            <h4 class="card-title" style="margin-top:8px;">NDMA Disaster Management Guidelines (India)</h4>
+            <p class="card-desc">National Disaster Management Authority, Government of India. Incident Response System (IRS) specifications for command structure and resource categorization.</p>
+          </div>
+
+          <div class="resq-card">
+            <span class="meta-pill">LOGISTICS RESEARCH</span>
+            <h4 class="card-title" style="margin-top:8px;">Emergency Logistics Optimization Literature</h4>
+            <p class="card-desc">Foundational principles in post-disaster fair-share resource allocation, vehicle routing under destroyed infrastructure, and dynamic queue prioritizing.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Runtime JavaScript Engine -->
+  <script src="app.js"></script>
+</body>
+</html>
