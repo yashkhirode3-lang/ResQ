@@ -165,7 +165,7 @@
   }
 
   // --- 3. STATE PERSISTENCE ---
-  let state = loadState();
+  let state = null;
 
   function loadState() {
     try {
@@ -182,13 +182,19 @@
   }
 
   function saveState(s) {
-    state = s || state;
+    if (s) {
+      state = s;
+    }
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (state) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
     } catch (e) {
       console.error('Failed to write to localStorage', e);
     }
   }
+
+  state = loadState();
 
   function resetState() {
     state = getSeedState();
@@ -1588,37 +1594,7 @@
     }
   }
 
-  // --- INITIALIZE RUNTIME ON DOM LOAD ---
-  document.addEventListener('DOMContentLoaded', () => {
-    initPrioritySimulator();
-    initNavigation();
-    renderAll();
-
-    // Bind Report Form if present
-    const repForm = document.getElementById('incidentReportForm');
-    if (repForm) {
-      repForm.addEventListener('submit', handleReportFormSubmit);
-    }
-
-    // Bind Needs Dropdown
-    const needsSelect = document.getElementById('needsZoneSelect');
-    if (needsSelect) {
-      needsSelect.addEventListener('change', updateNeedsInspection);
-    }
-
-    // Bind Audit Filters
-    document.querySelectorAll('.filter-pill').forEach(pill => {
-      pill.addEventListener('click', (e) => {
-        const filter = e.target.getAttribute('data-filter') || e.target.textContent.trim().toUpperCase();
-        filterAuditLogs(filter);
-      });
-    });
-
-    // Default Architecture Node selection
-    selectArchitectureNode('report');
-  });
-
-  // Expose global controller
+  // Expose global controller immediately
   const ResqEngine = {
     // Modules
     ReportIntakeModule,
@@ -1659,5 +1635,41 @@
   window.ReliefApp = ResqEngine;
   window.PS20Prototype = ResqEngine;
   window.PS20PrototypeUI = ResqEngine;
+
+  // --- INITIALIZE RUNTIME ON DOM LOAD ---
+  function initApp() {
+    initPrioritySimulator();
+    initNavigation();
+    renderAll();
+
+    // Bind Report Form if present
+    const repForm = document.getElementById('incidentReportForm');
+    if (repForm) {
+      repForm.addEventListener('submit', handleReportFormSubmit);
+    }
+
+    // Bind Needs Dropdown
+    const needsSelect = document.getElementById('needsZoneSelect');
+    if (needsSelect) {
+      needsSelect.addEventListener('change', updateNeedsInspection);
+    }
+
+    // Bind Audit Filters
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const filter = e.target.getAttribute('data-filter') || e.target.textContent.trim().toUpperCase();
+        filterAuditLogs(filter);
+      });
+    });
+
+    // Default Architecture Node selection
+    selectArchitectureNode('report');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 
 })();
